@@ -11,7 +11,7 @@
 // **  Change IPADDRESS to the ip address of the MQTT server.             **
 // **  if only using one network the SSID2 and 3 can be left as is.       **
 // **                                                                     **
-// **                                                                     **
+// **  Look for //**changeme**//                                          **
 // ************************************************************************* 
 
 
@@ -23,22 +23,22 @@
 
  
 // DEFINE HERE THE KNOWN NETWORKS add your netork here
-const char* KNOWN_SSID[] = {"SSID1", "SSID2", "SSID3"};
-const char* KNOWN_PASSWORD[] = {"PASSWORD1", "PASSWORD2", "PASSWORD3"};
-const char* KNOWN_MQTT[] = {"IPADDRESS1", "IPADDRESS2", "IPADDRESS3"};
+const char* KNOWN_SSID[] = {"SSID1", "SSID2", "SSID3"}; //**changeme**//
+const char* KNOWN_PASSWORD[] = {"PASSWORD1", "PASSWORD2", "PASSWORD3"}; //**changeme**//
+const char* KNOWN_MQTT[] = {"IPADDRESS1", "IPADDRESS2", "IPADDRESS3"}; //**changeme**//
 
 const int   KNOWN_SSID_COUNT = sizeof(KNOWN_SSID) / sizeof(KNOWN_SSID[0]); // number of known networks
 
-char* topic_1 = "lever_name/1";
-char* topic_2 = "lever_name/2";
-char* topic_3 = "lever_name/3";
-char* topic_4 = "lever_name/4";
-char* topic_5 = "lever_name/5";
-char* topic_6 = "lever_name/6";
-char* topic_7 = "lever_name/7";
-char* topic_8 = "lever_name/8";
+char* topic_1 = "lever_name/1"; //**changeme**//
+char* topic_2 = "lever_name/2"; //**changeme**//
+char* topic_3 = "lever_name/3"; //**changeme**//
+char* topic_4 = "lever_name/4"; //**changeme**//
+char* topic_5 = "lever_name/5"; //**changeme**//
+char* topic_6 = "lever_name/6"; //**changeme**//
+char* topic_7 = "lever_name/7"; //**changeme**//
+char* topic_8 = "lever_name/8"; //**changeme**//
 
-String clientName = "lever_name"; 
+String clientName = "lever_name"; //**changeme**//
 
 
 int lever1 = 5;  // D1 nodemcu
