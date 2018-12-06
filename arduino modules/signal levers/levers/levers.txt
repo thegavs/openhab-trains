@@ -1,0 +1,25 @@
+Levers
+
+This module will read the value of upto 8 switches or levers and transmit the change to the opnehab server where rules will then fire to move points or signals.
+
+The module is designed to be used with a nodemcu but other wifi arduino modules will work as well with small changes.
+
+In the arduino code look for //**changeme**//  this will indicate values that either need to be changed or can be left as is.
+
+SSID change to the name of your wifi network.
+PASSWORD change to your wifi password.
+IPADDRESS change to the ip address of the MQTT server which is running on your raspberry pi or other server running openhab.
+
+lever_name is the name of the module.   If you plan on running more than one lever module this needs to be changed otherwise it can stay the same.
+
+Within openhab server you will need to enable the following bindings.
+
+MQTT action.
+MQTT Binding.
+Map transformation.
+
+These are best enabled using the paper UI.  screenshots are in the directory.
+
+
+
+
