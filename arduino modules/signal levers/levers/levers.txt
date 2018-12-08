@@ -34,7 +34,7 @@ I recommend using nodemcus as the base arduino, they are cheap wifi boards that 
 
 Any toggle switches can be used as switches.  I use the cobolt levers on Warton road (cobolt.jpg) only the black and orange wires need to be used.
 
-I recommend using jst connectors soldered to a breadboard to connect the switches then a 15 way header to connect the arduino.
+I recommend using jst connectors soldered to a breadboard to connect the switches then a 15 way header to connect the arduino. See components.txt for an example list of components and costs.
 
 
 
