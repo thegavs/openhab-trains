@@ -1,0 +1,11 @@
+
+Switch Lever1 { mqtt="<[broker:wartonroad/1:command:MAP(onoff.map)]"}
+Switch Lever2 { mqtt="<[broker:wartonroad/2:command:MAP(onoff.map)]"}
+Switch Lever3 { mqtt="<[broker:wartonroad/3:command:MAP(onoff.map)]"}
+Switch Lever4 { mqtt="<[broker:wartonroad/4:command:MAP(onoff.map)]"}
+Switch Lever5 { mqtt="<[broker:wartonroad/5:command:MAP(onoff.map)]"}
+Switch Lever6 { mqtt="<[broker:wartonroad/6:command:MAP(onoff.map)]"}
+Switch Lever7 { mqtt="<[broker:wartonroad/7:command:MAP(onoff.map)]"}
+Switch Lever8 { mqtt="<[broker:wartonroad/8:command:MAP(onoff.map)]"}
+
+/*end*/

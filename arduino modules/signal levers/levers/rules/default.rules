@@ -1,0 +1,79 @@
+rule "lever-1"
+when
+	Item Lever1 changed
+then
+    if(Lever1.state == ON) 
+    	publish("broker", "signal_1", "1:010:055")
+    else 
+    	publish("broker", "signal_1","0:010:055")
+end
+
+rule "lever-2"
+when
+	Item Lever2 changed
+then
+    if(Lever2.state == ON) 
+    	publish("broker", "signal_2", "1:010:055")
+    else 
+    	publish("broker", "signal_2","0:010:055")
+end
+
+rule "lever-3"
+when
+	Item Lever3 changed
+then
+    if(Lever3.state == ON) 
+    	publish("broker", "signal_1", "1:010:055")
+    else 
+    	publish("broker", "signal_1","0:010:055")
+end
+
+rule "lever-4"
+when
+	Item Lever4 changed
+then
+    if(Lever4.state == ON) 
+    	publish("broker", "signal_2", "1:010:055")
+    else 
+    	publish("broker", "signal_2","0:010:055")
+end
+
+rule "lever-5"
+when
+	Item Lever5 changed
+then
+    if(Lever5.state == ON) 
+    	publish("broker", "signal_5", "045")
+    else 
+    	publish("broker", "signal_5","010")
+end
+
+rule "lever-6"
+when
+	Item Lever6 changed
+then
+    if(Lever6.state == ON) 
+    	publish("broker", "signal_6", "045")
+    else 
+    	publish("broker", "signal_6","010")
+end
+
+rule "lever-7"
+when
+	Item Lever7 changed
+then
+    if(Lever7.state == ON) 
+    	publish("broker", "signal_7", "1:010:045")
+    else 
+    	publish("broker", "signal_7","0:010:045")
+end
+
+rule "lever-8"
+when
+	Item Lever8 changed
+then
+    if(Lever8.state == ON) 
+    	publish("broker", "signal_8", "1:010:085")
+    else 
+    	publish("broker", "signal_8","0:010:085")
+end

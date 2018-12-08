@@ -4,13 +4,35 @@ This module will read the value of upto 8 switches or levers and transmit the ch
 
 The module is designed to be used with a nodemcu but other wifi arduino modules will work as well with small changes.
 
-In the arduino code look for //**changeme**//  this will indicate values that either need to be changed or can be left as is.
+Contents.
+
+1. Arduino code.
+2. Arduino hardware.
+3. Openhab bindings.
+4. Openhab items.
+5. Openhab sitemap.
+6. Openhab rules.
+
+
+1. Arduino code.
+
+Open levers.ino in the arduino IDE and look for //**changeme**//  this will indicate values that either need to be changed or can be left as is.
 
 SSID change to the name of your wifi network.
 PASSWORD change to your wifi password.
 IPADDRESS change to the ip address of the MQTT server which is running on your raspberry pi or other server running openhab.
 
+Having multipule entrys enables a module to be tested on one system then delployed on another.  The IP address of the MQTT server needs to be be fixed in the DHCP section of your wifi router.
+
 lever_name is the name of the module.   If you plan on running more than one lever module this needs to be changed otherwise it can stay the same.
+
+
+
+2. Arduino hardware.
+
+
+
+3. Openhab bindings.
 
 Within openhab server you will need to enable the following bindings.
 
@@ -18,8 +40,88 @@ MQTT action.
 MQTT Binding.
 Map transformation.
 
-These are best enabled using the paper UI.  screenshots are in the directory.
+These are best enabled using the paper UI.  Screenshots are in the directory.
 
+The onoff.map file in the transform directory needs to be copied into the openhab config transform directory.
+
+
+4. Openhab items.
+
+All switches or levers need to be defined in the items file in the openhab config items directory.  These are defined as switches.
+
+Switch Lever1 { mqtt="<[broker:lever_name/1:command:MAP(onoff.map)]"}
+Switch Lever2 { mqtt="<[broker:lever_name/2:command:MAP(onoff.map)]"}
+Switch Lever3 { mqtt="<[broker:lever_name/3:command:MAP(onoff.map)]"}
+Switch Lever4 { mqtt="<[broker:lever_name/4:command:MAP(onoff.map)]"}
+Switch Lever5 { mqtt="<[broker:lever_name/5:command:MAP(onoff.map)]"}
+Switch Lever6 { mqtt="<[broker:lever_name/6:command:MAP(onoff.map)]"}
+Switch Lever7 { mqtt="<[broker:lever_name/7:command:MAP(onoff.map)]"}
+Switch Lever8 { mqtt="<[broker:lever_name/8:command:MAP(onoff.map)]"}
+
+If you changed the lever_name in the arduino code it needs to be changed here as well.
+
+
+5. Openhab sitemap.
+
+The following can be added to the sitemap file found in openhab config sitemap directory.
+
+	Group item=Warton label="Warton Road" icon="ground floor"	
+		{
+			Switch item=Lever1 label="Lever 1"
+			Switch item=Lever2 label="Lever 2"
+			Switch item=Lever3 label="Lever 3"
+			Switch item=Lever4 label="Lever 4"
+			Switch item=Lever5 label="Lever 5"
+			Switch item=Lever6 label="Lever 6"
+			Switch item=Lever7 label="Lever 7"
+			Switch item=Lever8 label="Lever 8"
+		}
+
+This will then show which levers or switches are set.  levers.png is an example.   This is accessable to any PC or phone connected to the wifi and by clicking on the buttons can change the value as well.
+
+
+6. Openhab rules.
+
+The rules file determines what happens when a lever or switch is changed.  This can be as simple as changing one point or signal or can be used to introduce interlocking or route setting.  
+As openhab is a home automation server that connects to many different things via different bindings the possablitys are endless.
+
+
+6.1 Simple example.
+
+rule "lever-1"
+when
+	Item Lever1 changed
+then
+    if(Lever1.state == ON) 
+    	publish("broker", "signal_1", "1:010:055")
+    else 
+    	publish("broker", "signal_1","0:010:055")
+end
+
+This is inluded the rules directory.  In this example when lever one is switched on then signal_1 is told to move.
+
+
+6.2 two signal example.
+
+rule "lever-9"
+when
+	Item Lever9 changed
+then
+    if(Lever1.state == ON) 
+    	{
+		publish("broker", "signal_1", "1:010:055")
+		publish("broker", "signal_1", "1:010:055")
+		}
+    else 
+    	{
+		publish("broker", "signal_2","0:010:055")
+		publish("broker", "signal_2","0:010:055")
+		}
+end
+
+
+This will move 2 signals such as a home and distant when a lever nine is switched on.  Using these it can be easily expanded to route setting usng times.
+For example set a distant signal then wait 30 seconds, then set a  home signal then wait 10 seconds before setting two points.
 
 
 

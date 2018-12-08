@@ -12,6 +12,9 @@
 // **  if only using one network the SSID2 and 3 can be left as is.       **
 // **                                                                     **
 // **  Look for //**changeme**//                                          **
+// **                                                                     **
+// ** v1.0 initial realease.                                              **
+// **                                                                     **
 // ************************************************************************* 
 
 
