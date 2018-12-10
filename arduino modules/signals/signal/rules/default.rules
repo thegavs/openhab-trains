@@ -1,0 +1,9 @@
+rule "lever-3"
+when
+	Item Lever3 changed
+then
+    if(Lever3.state == ON) 
+    	publish("broker", "signal_3", "1:010:055:256")
+    else 
+    	publish("broker", "signal_3","0:010:055:012")
+end

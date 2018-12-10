@@ -38,9 +38,10 @@ Modules published.
 
 Levers - reads the position of levers and transmits value to server.
 
+signal - moves two semaphore signals.
+
 Modules in development.
 
-signal - moves two semaphore signals.
 
 ground signal - for two ground signals.
 

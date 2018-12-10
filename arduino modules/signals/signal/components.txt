@@ -1,0 +1,60 @@
+levers
+
+This is a list of suggested components with links and costs.  I have no affiliation with the links other than a happy customer.
+
+nodemcu (arduino)
+https://www.ebay.co.uk/itm/NodeMcu-Lua-V3-ESP8266-CH340G-ESP-12E-WIFI-Lua-Internet-Development-Board-Module-/291968023031
+cost from £2.36
+
+voltage regulator 5v
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=140_171&products_id=1306
+cost £0.37
+
+stripboard (will make multipule modules)
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=238_244&products_id=1858
+£2.80
+
+connectors male x2
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_339&products_id=2794
+£0.18
+
+connectors female x 2
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_339&products_id=2792
+£0.14
+
+3 way JYK connectors female x 2
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_339&products_id=2796
+£0.18
+
+3 way JYK connectors male x 2
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_339&products_id=2797
+0.32
+
+crimp connectors x10
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_339&products_id=2793
+£0.70
+
+assortied wire (will make multipule modules)
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=200_201&products_id=2167
+£1.88
+
+15 way connector x 2
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_230&products_id=2879
+£0.68
+
+LED x2
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=172_176&products_id=1340
+£0.20
+
+220ohm resistor x 2
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=83_84_85&products_id=437
+£0.14
+
+Servos x2
+https://www.ebay.co.uk/itm/Tower-Pro-SG-90-SG90-9g-Micro-Servo-For-Car-Helicopter-Plane-Boat-New-UK-Seller/201515155582?hash=item2eeb3d407e:m:mHexAhdVJRSx9fwqkm6yd8A:rk:4:pf:0
+£5.18
+
+
+Total cost around £15 the wire and strip board will do several modules cost ignoring these is around £10.45 per module.
+
+
