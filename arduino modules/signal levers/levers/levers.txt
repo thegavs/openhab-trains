@@ -1,6 +1,7 @@
 Levers
 
-This module will read the value of upto 8 switches or levers and transmit the change to the openhab server where rules will then fire to move points or signals.
+This module will read the value of upto 8 switches or levers and transmit the change to the openhab server where rules will 
+then fire to move points or signals.
 
 The module is designed to be used with a nodemcu but other wifi arduino modules will work as well with small changes.
 
@@ -16,25 +17,32 @@ Contents.
 
 1. Arduino code.
 
-Open levers.ino in the arduino IDE and look for //**changeme**//  this will indicate values that either need to be changed or can be left as is.
+Open levers.ino in the arduino IDE and look for //**changeme**//  this will indicate values that either need to be changed 
+or can be left as is.
 
 SSID change to the name of your wifi network.
 PASSWORD change to your wifi password.
-IPADDRESS change to the ip address of the MQTT server which is running on your raspberry pi or other server running openhab.
+IPADDRESS change to the ip address of the MQTT server which is running on your raspberry pi or other server running 
+openhab.
 
-Having multiple entry’s enables a module to be tested on one system then deployed on another.  The IP address of the MQTT server needs to be be fixed in the DHCP section of your wifi router.
+Having multiple entry’s enables a module to be tested on one system then deployed on another.  The IP address of the MQTT 
+server needs to be be fixed in the DHCP section of your wifi router.
 
-lever_name is the name of the module.   If you plan on running more than one lever module this needs to be changed otherwise it can stay the same.
+lever_name is the name of the module.   If you plan on running more than one lever module this needs to be changed 
+otherwise it can stay the same.
 
 
 
 2. Arduino hardware.
 
-I recommend using nodemcus as the base arduino, they are cheap wifi boards that will fit easily on a breadboard.  levers_schematic.png shows the wiring diagram.  There is a fritz file in the fritzing direcotry.
+I recommend using nodemcus as the base arduino, they are cheap wifi boards that will fit easily on a breadboard.  
+levers_schematic.png shows the wiring diagram.  There is a fritz file in the fritzing direcotry.
 
-Any toggle switches can be used as switches.  I use the cobolt levers on Warton road (cobolt.jpg) only the black and orange wires need to be used.
+Any toggle switches can be used as switches.  I use the cobolt levers on Warton road (cobolt.jpg) only the black and orange 
+wires need to be used.
 
-I recommend using jst connectors soldered to a breadboard to connect the switches then a 15 way header to connect the arduino. See components.txt for an example list of components and costs.
+I recommend using jst connectors soldered to a breadboard to connect the switches then a 15 way header to connect the arduino. 
+See components.txt for an example list of components and costs.
 
 
 
@@ -53,7 +61,8 @@ The onoff.map file in the transform directory needs to be copied into the openha
 
 4. Openhab items.
 
-All switches or levers need to be defined in the items file in the openhab config items directory.  These are defined as switches.
+All switches or levers need to be defined in the items file in the openhab config items directory.  
+These are defined as switches.
 
 Switch Lever1 { mqtt="<[broker:lever_name/1:command:MAP(onoff.map)]"}
 Switch Lever2 { mqtt="<[broker:lever_name/2:command:MAP(onoff.map)]"}
@@ -83,13 +92,16 @@ The following can be added to the sitemap file found in openhab config sitemap d
 			Switch item=Lever8 label="Lever 8"
 		}
 
-This will then show which levers or switches are set.  levers.png is an example.   This is accessable to any PC or phone connected to the wifi and by clicking on the buttons can change the value as well.
+This will then show which levers or switches are set.  levers.png is an example.   This is accessable to any PC or 
+phone connected to the wifi and by clicking on the buttons can change the value as well.
 
 
 6. Openhab rules.
 
-The rules file determines what happens when a lever or switch is changed.  This can be as simple as changing one point or signal or can be used to introduce interlocking or route setting.  
-As openhab is a home automation server that connects to many different things via different bindings the possibilitys are endless.
+The rules file determines what happens when a lever or switch is changed.  This can be as simple as changing one point 
+or signal or can be used to introduce interlocking or route setting.  
+As openhab is a home automation server that connects to many different things via different bindings the possibilitys 
+are endless.
 
 
 6.1 Simple example.
@@ -126,7 +138,8 @@ then
 end
 
 
-This will move 2 signals such as a home and distant when a lever nine is switched on.  Using these it can be easily expanded to route setting usng times.
+This will move 2 signals such as a home and distant when a lever nine is switched on.  Using these it can be easily 
+expanded to route setting usng times.
 For example set a distant signal then wait 30 seconds, then set a  home signal then wait 10 seconds before setting two points.
 
 

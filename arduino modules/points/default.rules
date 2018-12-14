@@ -1,0 +1,13 @@
+
+
+rule "lever-6"
+when
+	Item Lever6 changed
+then
+    if(Lever6.state == ON) 
+    	publish("broker", "point_3", "1:080:100:265")
+    else 
+    	publish("broker", "point_3","0:080:100:265")
+end
+
+

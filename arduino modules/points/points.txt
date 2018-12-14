@@ -1,8 +1,8 @@
 signal
 
-This module will move 2 servos which can be connected to 2 semaphore arms.  The starting and end position of each servo is 
-controlled from openhab rules along with an LED brightness.
-The servos will move down slowly and up quickly with a bounce to replicate real life semaphore signals.
+This module will move 3 servos which can be connected to 3 points.  The starting and end position of each servo is 
+controlled from openhab rules.
+The servos will move down slowly to replicate real point motors.
 
 The openhab rule will pass a string to the module which is then decoded.
 
@@ -10,11 +10,9 @@ The openhab rule will pass a string to the module which is then decoded.
 A is either 1 or 0 for on or off.
 BBB is a 3 digit number between 000 and 180 this is the starting position of the servo.
 CCC is a 3 digit number between 000 and 180 this is the end position of the servo.
-DDD is a 3 digit number between 000 and 256 this sets the LED brightness 000 is off and 256 is full brightness.   
+DDD is a 3 digit number between 000 and 256 and is not used for points
 
-Change these values allows the signals to be tweaked once in place without having to reflash the arduino.
-
-Two leds can be used one for each signal arm and the brightness of each can be changed for both the one and off position.
+Change these values allows the points to be tweaked once in place without having to reflash the arduino.
 
 The module is designed to be used with a nodemcu but other wifi arduino modules will work as well with small changes.
 
@@ -38,14 +36,14 @@ IPADDRESS change to the ip address of the MQTT server which is running on your r
 Having multiple entry’s enables a module to be tested on one system then deployed on another.  The IP address of the MQTT 
 server needs to be be fixed in the DHCP section of your wifi router.
 
-Topic_1 and Topic_2 are the MQTT topic set in the rules file in openhab.  They need to be unique to every servo.
+point_1, point_2 and point_3 are the MQTT topic set in the rules file in openhab.  They need to be unique to every servo.
 
 
 
 2. Arduino hardware.
 
 I recommend using nodemcus as the base arduino, they are cheap wifi boards that will fit easily on a breadboard.  
-signal_schematic.png shows the wiring diagram.  There is a fritz file signal.fzz.
+point_schematic.png shows the wiring diagram.  There is a fritz file points.fzz.
 
 Any servo will do I suggest using the 9g SG90 servos. These servos need 5v to work.
 
@@ -70,31 +68,31 @@ The onoff.map file in the transform directory needs to be copied into the openha
 
 4. Openhab rules.
 
-The rules file determines what values are passed to the signal module.  In the example below "signal_3" needs to be changed 
+The rules file determines what values are passed to the signal module.  In the example below "point_3" needs to be changed 
 to what ever you called the signal in topic_1 of the arduino code.  The string afterwards is in the following format.
 
 "A:BBB:CCC:DDD"
 A is either 1 or 0 for on or off.
 BBB is a 3 digit number between 000 and 180 this is the starting position of the servo.
 CCC is a 3 digit number between 000 and 180 this is the end position of the servo.
-DDD is a 3 digit number between 000 and 256 this sets the LED brightness 000 is off and 256 is full brightness.
+DDD is a 3 digit number between 000 and 256 and is not used for points
 
 4.1 Simple example.
 
-rule "lever-3"
+rule "lever-6"
 when
-	Item Lever3 changed
+	Item Lever6 changed
 then
-    if(Lever3.state == ON) 
-    	publish("broker", "signal_3", "1:010:055:256")
+    if(Lever6.state == ON) 
+    	publish("broker", "point_3", "1:080:100:265")
     else 
-    	publish("broker", "signal_3","0:010:055:012")
+    	publish("broker", "point_3","0:080:100:265")
 end
 
-This is included in the rules directory.  In this example when lever one is switched on then signal_1 is told to move.
+This is included in the rules directory.  In this example when lever one is switched on then point_1 is told to move.
 
 
-4.2 two signal example.
+4.2 two point example.
 
 rule "lever-9"
 when
@@ -102,18 +100,18 @@ when
 then
     if(Lever1.state == ON) 
     	{
-		publish("broker", "signal_1", "1:010:055:256")
-		publish("broker", "signal_1", "1:010:055:256")
+		publish("broker", "point_3", "1:080:100:265")
+		publish("broker", "point_4", "1:080:100:265")
 		}
     else 
     	{
-		publish("broker", "signal_2","0:010:055:256")
-		publish("broker", "signal_2","0:010:055:256")
+		publish("broker", "point_3", "0:080:100:265")
+		publish("broker", "point_4", "0:080:100:265")
 		}
 end
 
 
-This will move 2 signals such as a home and distant when a lever nine is switched on.  Using these it can be easily expanded 
+This will move 2 points such as a double slip when a lever nine is switched on.  Using these it can be easily expanded 
 to route setting usng times.
 For example set a distant signal then wait 30 seconds, then set a  home signal then wait 10 seconds before setting two 
 points.

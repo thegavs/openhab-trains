@@ -1,7 +1,6 @@
 levers
 
-This is a list of suggested components with links and costs.  I have no affiliation with the links other than a 
-happy customer.
+This is a list of suggested components with links and costs.  I have no affiliation with the links other than a happy customer.
 
 nodemcu (arduino)
 https://www.ebay.co.uk/itm/NodeMcu-Lua-V3-ESP8266-CH340G-ESP-12E-WIFI-Lua-Internet-Development-Board-Module-/291968023031
@@ -15,18 +14,18 @@ stripboard (will make multipule modules)
 https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=238_244&products_id=1858
 £2.80
 
-connectors male x8
-https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_339&products_id=2794
-£0.72
 
-connectors female x 8
-https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_339&products_id=2792
-£0.56
+3 way JYK connectors female x 3
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_339&products_id=2796
+£0.27
 
+3 way JYK connectors male x 3
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_339&products_id=2797
+0.50
 
-crimp connectors x16
+crimp connectors x10
 https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_339&products_id=2793
-£0.64
+£0.70
 
 assortied wire (will make multipule modules)
 https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=200_201&products_id=2167
@@ -36,8 +35,11 @@ https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=200_201&product
 https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_230&products_id=2879
 £0.68
 
+Servos x3
+https://www.ebay.co.uk/
+£7.77
 
-Total cost around £10 the wire and strip board will do several modules cost ignoring these is around £5.33 
-per lever module.
 
-These costs do not account for switches or levers as these will be personal preferences.
+Total cost around £17 the wire and strip board will do several modules cost ignoring these is around £12.65 per module.
+
+

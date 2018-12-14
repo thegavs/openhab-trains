@@ -40,10 +40,15 @@ Levers - reads the position of levers and transmits value to server.
 
 signal - moves two semaphore signals.
 
+points - moves 3 points.
+
+
 Modules in development.
 
 
 ground signal - for two ground signals.
 
-points - moves 2 points.
+points - moves 3 points.
+
+Brushless - allows control of brushless motors
 

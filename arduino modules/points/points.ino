@@ -1,10 +1,10 @@
 // ************************************************************************* 
-// **  a module from openhab-trains to work 2 semaphore signals           **
-// **                                                          **
+// **  a module from openhab-trains to work 3 point servos                **
+// **                                                                     **
 // **                                                                     **
 // **  https://github.com/thegavs/openhab-trains                          **
 // **                                                                     **
-// **  Change "signal_3 & 4" to something that makes sense to you.        **
+// **  Change "point_1,2 & 3" to something that makes sense to you.       **
 // **                                                                     **
 // **  Change SSID, PASSWORD to your wifi network.                        **
 // **                                                                     **
@@ -13,9 +13,9 @@
 // **                                                                     **
 // **  Look for //**changeme**//                                          **
 // **                                                                     **
-// **  The signal start and end position and LED brightness can be        **
-// **  changed in openhab rules                                           **
-// ** v1.0 initial realease.                                              **
+// **  The point start and end position can be changed in openhab rules   **
+// **                                                                     **
+// **  v1.0 initial realease.                                             **
 // ************************************************************************* 
 
 #include <EEPROM.h>
@@ -31,34 +31,28 @@ const char* KNOWN_MQTT[] = {"192.168.0.101", "192.168.1.182", "192.168.0.100"}; 
  
 const int   KNOWN_SSID_COUNT = sizeof(KNOWN_SSID) / sizeof(KNOWN_SSID[0]); // number of known networks
 
-char* topic_1 = "signal_3"; //**changeme**//
-char* topic_2 = "signal_4"; //**changeme**//
+char* topic_1 = "point_1"; //**changeme**//
+char* topic_2 = "point_2"; //**changeme**//
+char* topic_3 = "point_3"; //**changeme**//
  
 WiFiClient espClient;
 PubSubClient client(espClient);
  
 String message;
 char* receivedChar;
-int volts_in;
-float volts_out;
-float volt_mod = 95.83;
+
 char message_buff[10];
 int pos = 0;    // variable to store the servo position
-const int analogOutPin = 0; // Analog output pin that the LED is attached to D3 nodemcu
+
 
 int on_off;
 int low;
 int high;
-int bounce;
-int led_brighness;
-
-int led1 = 14;   // arduino pin 14 nodemcu pin D5
-int led2 = 12;  // arduino pin 12 modemcu pin D6
-
 String temp;
 
-Servo homearm;
-Servo shuntarm;
+Servo point1;
+Servo point2;
+Servo point3;
 
 
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -91,15 +85,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
   high = temp.toInt();
   Serial.println(high);
 
-  temp = message.substring(10,13);
-  led_brighness = temp.toInt();
-  Serial.println(led_brighness);
-
-  bounce = high - 15;
   
   if (strcmp(topic,topic_1) == 0) 
     {
-      //Serial.print("inside direction");
+      Serial.print("point 1");
       Serial.println(message);
       if (on_off == 0)
       {
@@ -108,33 +97,24 @@ void callback(char* topic, byte* payload, unsigned int length) {
         for (pos = low; pos <= high; pos += 1)   
         { // goes from 0 degrees to 180 degrees
                                   // in steps of 1 degree
-          homearm.write(pos);              // tell servo to go to position in variable 'pos'
-          delay(3);  
+          point1.write(pos);              // tell servo to go to position in variable 'pos'
+          Serial.println(pos);
+          delay(15);  
         }
-        for (pos = high; pos >= bounce; pos -= 1) 
-        { // goes from 180 degrees to 0 degrees
-          homearm.write(pos);              // tell servo to go to position in variable 'pos'
-          delay(5);                       // waits 15ms for the servo to reach the position
-        }
-        for (pos = bounce; pos <= high; pos += 1) 
-        { // goes from 180 degrees to 0 degrees
-          homearm.write(pos);              // tell servo to go to position in variable 'pos'
-          delay(3);                       // waits 15ms for the servo to reach the position
-        }
+
       }
       else
       {
+        Serial.print(high);
         for (pos = high; pos >= low; pos -= 1) 
         { // goes from 180 degrees to 0 degrees
-          homearm.write(pos);              // tell servo to go to position in variable 'pos'
+          point1.write(pos);              // tell servo to go to position in variable 'pos'
           delay(15);                       // waits 15ms for the servo to reach the position
         }
       }
-      analogWrite(led1,led_brighness );
     }
   if (strcmp(topic, topic_2) == 0) 
    {
-    analogWrite(led2,led_brighness );
     if (on_off == 0) // off or up or danger
       {
         Serial.print("inside 0");
@@ -142,33 +122,52 @@ void callback(char* topic, byte* payload, unsigned int length) {
         for (pos = low; pos <= high; pos += 1)   
         { // goes from 0 degrees to 180 degrees
                                   // in steps of 1 degree
-          shuntarm.write(pos);              // tell servo to go to position in variable 'pos'
-          delay(3);  
+          point2.write(pos);              // tell servo to go to position in variable 'pos'
+          delay(15);  
         }
-        for (pos = high; pos >= bounce; pos -= 1) 
-        { // goes from 180 degrees to 0 degrees
-          shuntarm.write(pos);              // tell servo to go to position in variable 'pos'
-          delay(5);                       // waits 15ms for the servo to reach the position
-        }
-        for (pos = bounce; pos <= high; pos += 1) 
-        { // goes from 180 degrees to 0 degrees
-          shuntarm.write(pos);              // tell servo to go to position in variable 'pos'
-          delay(3);                       // waits 15ms for the servo to reach the position
-        }
+        
       }
       else // on or down or go or green
       {
         for (pos = high; pos >= low; pos -= 1) 
         { // goes from 180 degrees to 0 degrees
-          shuntarm.write(pos);              // tell servo to go to position in variable 'pos'
+          point2.write(pos);              // tell servo to go to position in variable 'pos'
           delay(15);                       // waits 15ms for the servo to reach the position
         }
       }
-      
+
+   
 
    }
+
+  if (strcmp(topic, topic_3) == 0) 
+   {
+    if (on_off == 0) // off or up or danger
+      {
+        Serial.print("inside 0");
+        Serial.println();
+        for (pos = low; pos <= high; pos += 1)   
+        { // goes from 0 degrees to 180 degrees
+                                  // in steps of 1 degree
+          point3.write(pos);              // tell servo to go to position in variable 'pos'
+          delay(15);  
+        }
+        
+      }
+      else // on or down or go or green
+      {
+        for (pos = high; pos >= low; pos -= 1) 
+        { // goes from 180 degrees to 0 degrees
+          point3.write(pos);              // tell servo to go to position in variable 'pos'
+          delay(15);                       // waits 15ms for the servo to reach the position
+        }
+      }
+
+   
+
+   }   
    message = "";
- //  move();
+
 }
  
  
@@ -182,6 +181,7 @@ void reconnect() {
   // ... and subscribe to topic
   client.subscribe(topic_1);
   client.subscribe(topic_2);
+  client.subscribe(topic_3);
  } else {
   Serial.print("failed, rc=");
   Serial.print(client.state());
@@ -277,12 +277,11 @@ void setup()
   client.setServer(KNOWN_MQTT[n], 1883);    // MQTT setup
   client.setCallback(callback);
 
-  homearm.attach(4); //home arm on D4 or D2 nodemcu
-  shuntarm.attach(5);   // shunt arm on D5 or D1 nodemcu
-  pinMode(led1, OUTPUT);
-  pinMode(led2, OUTPUT);
-  analogWrite(led1,256 );
-  analogWrite(led2,256 );
+  point1.attach(5); // D5 or D1 nodemcu
+  point2.attach(4);   // D4 or D2 nodemcu
+  point3.attach(14);  //D14 or D5 nodemcu
+
+
 }
  
 void loop()
