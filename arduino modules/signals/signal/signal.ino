@@ -25,9 +25,9 @@
 
 
 // DEFINE HERE THE KNOWN NETWORKS
-const char* KNOWN_SSID[] = {"Maprston", "wiccachick", "Warton"}; //**changeme**//
-const char* KNOWN_PASSWORD[] = {"modelsg3", "abigail1", "R0adR0ad"}; //**changeme**//
-const char* KNOWN_MQTT[] = {"192.168.0.101", "192.168.1.182", "192.168.0.100"}; //**changeme**//
+const char* KNOWN_SSID[] = {"SSID1", "SSID2", "SSID3"}; //**changeme**//
+const char* KNOWN_PASSWORD[] = {"PASSWORD1", "PASSWORD2", "PASSWORD3"}; //**changeme**//
+const char* KNOWN_MQTT[] = {"IPADDRESS1", "IPADDRESS2", "IPADDRESS3"}; //**changeme**//
  
 const int   KNOWN_SSID_COUNT = sizeof(KNOWN_SSID) / sizeof(KNOWN_SSID[0]); // number of known networks
 

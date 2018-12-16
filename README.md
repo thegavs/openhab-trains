@@ -1,12 +1,14 @@
 # openhab-trains
 Openhab-trains.  Combining the power of home automation systems and cheap arduinos to provide open source modules for running model trains.
 
-Designed for Garden railways where dcc running over tracks proves problematic but will work with smaller scales.  The wifi modules have been test at over 200 feet (60 metres) both inside and outside.
+Designed for Garden railways where dcc running over tracks proves problematic but will work with smaller scales.  The wifi modules have been 
+tested at over 200 feet (60 metres) both inside and outside.
 All modules are designed to run off 12v stepped down to 5v on board.   Most modules could also be modified to run on battery power.
 
 Using the home automation system allows for complex rules to be set up, allowing electronic interlocking to be used for route setting. 
 
-The Aim for this project is for people to be able to build simple cheap modules to control their layout and develop and add other modules to expand the system.
+The Aim for this project is for people to be able to build simple cheap modules to control their layout and develop and add other modules 
+to expand the system.
 
 
 
