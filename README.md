@@ -36,7 +36,7 @@ Video of first two modules in action.
 
 https://youtu.be/3NVWC1UaGtM
 
-Modules published.
+**Modules published.**
 
 Levers - reads the position of levers and transmits value to server.
 
@@ -45,12 +45,11 @@ signal - moves two semaphore signals.
 points - moves 3 points.
 
 
-Modules in development.
+**Modules in development.**
 
 
 ground signal - for two ground signals.
 
-points - moves 3 points.
 
 Brushless - allows control of brushless motors
 
