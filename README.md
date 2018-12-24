@@ -53,3 +53,11 @@ ground signal - for two ground signals.
 
 Brushless - allows control of brushless motors
 
+**Install guides**
+
+A guide to installing openhab server is in the openhab/install directory.
+
+**Arduino modules**
+
+Each module has its own directory with the code, wiring diagrams and component lists.
+

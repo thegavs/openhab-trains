@@ -51,13 +51,13 @@ Put the micro SD card into the pi and power on, if you skipped step 3 plug in th
 
 ** 5. Connect to server**
 
-In a web browser connect to http://<ipaddress>:8080  you should see various screens.
+In a web browser connect to http://ipaddress:8080  you should see various screens.
 
 ![ ](./openhab2.png  "start screen")
 
 PaperUI is used to configure the server.
 
-connecting to http://<ipaddress>:9001 will show you the log file.
+connecting to http://ipaddress:9001 will show you the log file.
 
 Using filemanger on your PC you should be able to connect to a network drive with a username and password
 of openhabian  this will allow you to change the configuration files.
@@ -68,8 +68,57 @@ Also use ssh in a command line to connect to the server username and password ag
 
 then run "sudo openhabian-config"  this then starts a configuration program.
 
-![ ](./openhabian-config.png  "openhab-config")
+![ ](./openhabian-config.png  "open hab config")
 
-**6. Static ip address**
 
-The ip address of the raspberry pi needs to be a fixed adress so it does not change every time it is rebooted.  To do this log onto your route and reserve the ip address in the DHCP section.  Details of how to do this will vary according to router but information on how to to do this can be found online.
+
+**6. update system**
+
+In the openhabian-config program select the first option (01) to down load the updates to the system.  
+
+Then the second option (02) to install the updates, this may take some time.
+
+
+Then go to the "Apply latest improvements" menu (10)
+
+![ ](./latest_improvments.png  "latest improvments")
+
+Click on each item to change the system.
+
+**7. Static ip address**
+
+The ip address of the raspberry pi needs to be a fixed address so it does not change every time it is rebooted.  To do this log onto your route and reserve the ip address in the DHCP section.  Details of how to do this will vary according to router but information on how to to do this can be found online.
+
+**8. Install MQTT**
+
+Still in openhab-config go to the "Optional Components" section in the main menu.
+
+![ ](./MQTT.png  "MQTT")
+
+Click on (23) Mosquitto to install the MQTT server, you can select all the default options.
+
+**9. Install bindings**
+
+Openhab uses a system of optional bindings to enable the system to work.   These bindings are continuously updated enabling the server to connect to and control differing devices.
+
+Openhab-trains currently needs 4 bindings to be installed to work.
+
+
+In a web browser connect to the server http//ipaddress:8080. 
+
+Select the paper UI panel and then configuration - system and ensure
+"include legacy 1.x bindings" is set on.
+
+![ ](./legacy.png  "legacy bindings")
+
+Select the paper UI panel and then addons - bindings.  Find the MQTT binding and install it.
+
+
+![ ](./MQTT_install.png  "MQTT install")
+
+Then still in paper UI go to addons - persistence and install the MQTT Persistence binding.
+
+Next is the MQTT action binding which is in addons - actions.  Install the MQTT action binding.
+
+Finally the MAP Transformation which is in addons - transformations.
+Install the MAP transformation.
