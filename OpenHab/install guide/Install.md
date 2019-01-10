@@ -51,7 +51,7 @@ Put the micro SD card into the pi and power on, if you skipped step 3 plug in th
 
 ** 5. Connect to server**
 
-In a web browser connect to http://ipaddress:8080  you should see various screens.
+In a web browser connect to http://ipaddress:8080 the first time you connect you should see a screen asking you to select "simple standard expert demo"  select the expert option then you should see various screens.
 
 ![ ](./openhab2.png  "start screen")
 
@@ -64,7 +64,7 @@ of openhabian  this will allow you to change the configuration files.
 
 ![ ](./openhab-conf.png  "openhab file system")
 
-Also use ssh in a command line to connect to the server username and password again openhabian.
+Also use ssh in a command line to connect to the server username and password again openhabian.  (For information on ssh see [ssh.md](./ssh.md) )
 
 then run "sudo openhabian-config"  this then starts a configuration program.
 
