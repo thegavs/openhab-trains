@@ -49,6 +49,16 @@ Unmount the micro SD card then insert into the Pi.    The system is designed to 
 
 Put the micro SD card into the pi and power on, if you skipped step 3 plug in the network cable first.   Grab a beer/tea and come back in an hour.
 
+Note that if the wifi fails try the following.
+
+Full steps below:
+
+Flash fresh openHABian image to SD card (openhabianpi-raspbian-201804031720-gitdba76f6-crc9e93c3eb.img.xz)
+Boot 3B+ from flashed SD, observe network error
+Login on local shell using openhabian/openhabian
+sudo raspi-config - set Network SSID, Passphrase, and WiFi Country
+reboot
+
 ** 5. Connect to server**
 
 In a web browser connect to http://ipaddress:8080 the first time you connect you should see a screen asking you to select "simple standard expert demo"  select the expert option then you should see various screens.

@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/home/gavin/.platformio/lib/**",
+                "/home/gavin/.platformio/lib/PubSubClient_ID89/src/**",
+                "/home/gavin/.platformio/lib/ESP8266/**",
+                "/opt/**"
+            ],
+            "defines": [ "USBCON" ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+            
+        }
+    ],
+    "version": 4
+}

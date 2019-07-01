@@ -1,0 +1,18 @@
+rule "relay_1"
+when
+	Item relay_1 changed
+then
+    if(relay_1.state == ON) 
+    	publish("broker", "relay_1", "1")
+    else 
+    	publish("broker", "relay_1","0")
+end
+rule "relay_2"
+when
+	Item relay_2 changed
+then
+    if(relay_2.state == ON) 
+    	publish("broker", "relay_2", "1")
+    else 
+    	publish("broker", "relay_2","0")
+end

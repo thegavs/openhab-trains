@@ -1,0 +1,31 @@
+levers
+
+This is a list of suggested components with links and costs.  I have no affiliation with the links other than a happy customer.
+
+nodemcu (arduino)
+https://www.ebay.co.uk/itm/NodeMcu-Lua-V3-ESP8266-CH340G-ESP-12E-WIFI-Lua-Internet-Development-Board-Module-/291968023031
+cost from £2.36
+
+voltage regulator 5v
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=140_171&products_id=1306
+cost £0.37
+
+stripboard (will make multipule modules)
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=238_244&products_id=1858
+£2.80
+
+assortied wire (will make multipule modules)
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=200_201&products_id=2167
+£1.88
+
+15 way connector x 2
+https://www.bitsbox.co.uk/index.php?main_page=product_info&cPath=225_230&products_id=2879
+£0.68
+
+5v relay x2
+https://www.ebay.co.uk/itm/5V-12V-or-24V-1-2-4-8-16-Channel-Relay-Module-Arduino-PI-ARM-AVR-DSP-PIC-/262722739443
+£2.75
+
+Total cost around £15 the wire and strip board will do several modules cost ignoring these is around £6.16 per module.
+
+

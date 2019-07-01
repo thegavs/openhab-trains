@@ -22,8 +22,6 @@ For ease of install I suggest using Openhabian.
 
 https://www.openhab.org/docs/installation/openhabian.html
 
-
-
 The modules are arduinos
 
 https://www.arduino.cc/
@@ -43,6 +41,8 @@ Levers - reads the position of levers and transmits value to server.
 signal - moves two semaphore signals.
 
 points - moves 3 points.
+
+relay - activates 2 relays
 
 
 **Modules in development.**

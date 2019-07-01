@@ -1,0 +1,89 @@
+**Relay**
+
+This module will move control two relays, the relay modules can switch either 12v DC or 220V AC.  For 220V AC I would recomend using Z wave switches.  Use 220V at your own risk.
+
+Each realy module has a central input (C) and two outputs (NC) and (NO).  NC is normally closed and NO is normally open.   activating the relay will switch NC to open (switch the current off) and NO to closed (switch the current on).
+
+The openhab rule will pass a string to the module which is then decoded.
+
+"A"
+A is either 1 or 0 for on or off.
+
+
+The module is designed to be used with a nodemcu but other wifi arduino modules will work as well with small changes.
+
+**Contents.**
+
+1. Arduino code.
+2. Arduino hardware.
+3. Openhab bindings.
+4. Openhab rules.
+
+
+**1. Arduino code.**
+
+Open singal.ino in the arduino IDE and look for //**changeme**//  this will indicate values that either need to be changed 
+or can be left as is.
+
+SSID change to the name of your wifi network.
+PASSWORD change to your wifi password.
+IPADDRESS change to the ip address of the MQTT server which is running on your raspberry pi or other server running openhab.
+
+Having multiple entry’s enables a module to be tested on one system then deployed on another.  The IP address of the MQTT 
+server needs to be be fixed in the DHCP section of your wifi router.
+
+relay_1 and relay_2 are the MQTT topic set in the rules file in openhab.  They need to be unique to every relay.
+
+
+
+**2. Arduino hardware.**
+
+I recommend using nodemcus as the base arduino, they are cheap wifi boards that will fit easily on a breadboard.  
+relay_schematic.png shows the wiring diagram.  There is a fritz file relay.fzz.
+
+
+See components.txt for an example list of components and costs.
+
+
+
+**3. Openhab bindings.**
+
+Within openhab server you will need to enable the following bindings.
+
+MQTT action.
+MQTT Binding.
+Map transformation.
+
+These are best enabled using the paper UI.  Screenshots are in the directory.
+
+The onoff.map file in the transform directory needs to be copied into the openhab config transform directory.
+
+
+
+**4. Openhab rules.**
+
+The rules file determines what values are passed to the relay module.  In the example below "relay_1" needs to be changed 
+to what ever you called the relay in topic_1 of the arduino code.  The string afterwards is in the following format.
+
+"A"
+A is either 1 or 0 for on or off.
+
+
+4.1 Simple example.
+
+rule "relay_1"
+when
+	Item relay_1 changed
+then
+    if(relay_1.state == ON) 
+    	publish("broker", "relay_1", "1")
+    else 
+    	publish("broker", "relay_1","0")
+end
+
+This is included in the rules directory.  In this example when lever one is switched on then relay_1 is told to switch.
+
+
+
+
+
